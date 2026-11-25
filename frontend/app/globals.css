@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens (Tailwind v4 CSS-based theme: Light Mode) ─── */
+@theme inline {
+  /* Brand Monochrome */
+  --color-brand-primary: #09090b;
+  --color-brand-secondary: #52525b;
+
+  /* Surfaces */
+  --color-surface-base: #ffffff;
+  --color-surface-panel: #f9fafb;
+  --color-surface-elevated: #f3f4f6;
+
+  /* Text */
+  --color-text-primary: #09090b;
+  --color-text-secondary: #52525b;
+  --color-text-muted: #71717a;
+
+  /* Border */
+  --color-border-default: #e5e7eb;
+
+  /* Status */
+  --color-status-success: #16a34a;
+  --color-status-warning: #d97706;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Border Radius */
+  --radius-card: 0.75rem;
+  --radius-btn: 0.5rem;
+}
+
+/* ─── CSS Variables for direct use ─── */
+:root {
+  --brand-primary: #09090b;
+  --brand-secondary: #52525b;
+  --bg-base: #ffffff;
+  --bg-surface: #f9fafb;
+  --bg-elevated: #f3f4f6;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #71717a;
+  --border: #e5e7eb;
+  --success: #16a34a;
+  --warning: #d97706;
+}
+
+/* ─── Base Styles ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ─── Lenis Smooth Scroll Integration ─── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+html {
+  scroll-padding-top: 4rem;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
+body {
+  background-color: #ffffff;
+  color: #09090b;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ─── Custom Scrollbar (Webkit) ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid #09090b;
+  outline-offset: 2px;
+}
+
+/* ─── Brand gradient utility (Light Monochrome) ─── */
+.gradient-brand {
+  background: linear-gradient(135deg, #09090b, #52525b);
+}
+
+.gradient-brand-text {
+  background: linear-gradient(135deg, #09090b 30%, #52525b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass effect ─── */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Hide Next.js Dev Badge / Indicator ─── */
+nextjs-portal,
+#nextjs-portal,
+[data-nextjs-dev-tools-button],
+[data-nextjs-toast],
+div[data-nextjs-dev-tools-button] {
+  display: none !important;
+}
