@@ -1,11 +1,13 @@
+import { validateEnv, env } from "./config/env";
+
+// Call validateEnv() first — before anything else
+validateEnv();
+
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
-import { validateEnv } from "./config/validateEnv";
-import { leadsRouter } from "./routes/leads";
-import { adminRouter } from "./routes/admin";
+import { runStartupChecks } from "./config/startup";
 
-const env = validateEnv();
 const app = express();
 
 // Security headers
@@ -14,51 +16,44 @@ app.use(helmet());
 // CORS configuration
 app.use(
   cors({
-    origin: [env.FRONTEND_URL, "http://localhost:3000", "http://localhost:3005"],
+    origin: env.frontendUrl,
     credentials: true,
   })
 );
 
-// Body parsing with 10kb limit to prevent payload flooding
+// Body parsing with 10kb limit
 app.use(express.json({ limit: "10kb" }));
 
-// Health Check Endpoint
-app.get("/api/health", (req: Request, res: Response) => {
-  res.json({
+// Health check endpoint
+app.get("/api/health", (_req: Request, res: Response) => {
+  res.status(200).json({
     status: "ok",
     timestamp: new Date().toISOString(),
   });
 });
 
-// Route Mounting
-app.use("/api/leads", leadsRouter);
-app.use("/api/admin", adminRouter);
-
-// 404 Handler
-app.use((req: Request, res: Response) => {
-  res.status(404).json({
-    success: false,
-    message: "Endpoint not found",
-  });
-});
-
-// Global Error Handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error("[Unhandled Server Error]:", err);
+// Global error handler middleware
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  console.error("[Global Error Handler]:", err);
   res.status(500).json({
-    success: false,
-    message: "Internal server error",
+    status: "error",
+    message: err?.message || "Internal server error",
   });
 });
 
-const PORT = parseInt(env.PORT, 10) || 4000;
+export { app };
 
-if (process.env.NODE_ENV !== "test") {
-  app.listen(PORT, () => {
-    console.log(
-      `[KnowBridge Marketing Backend] Server running on http://localhost:${PORT}`
-    );
+async function startServer() {
+  await runStartupChecks();
+
+  app.listen(env.port, () => {
+    console.log(`  KnowBridge backend ready at http://localhost:${env.port}\n`);
   });
 }
 
-export default app;
+if (process.env.NODE_ENV !== "test") {
+  startServer().catch((err) => {
+    console.error("Fatal startup error:", err);
+    process.exit(1);
+  });
+}

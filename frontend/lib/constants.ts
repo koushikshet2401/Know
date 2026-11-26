@@ -5,10 +5,12 @@ export const VIDEO_URL = "https://www.youtube.com/embed/PLACEHOLDER";
 
 // ─── Navigation ──────────────────────────────────────────────────────────────
 export const NAV_LINKS = [
+  { label: "Home", href: "#hero" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Why KnowBridge", href: "#why-knowbridge" },
+  { label: "What You Get", href: "#what-you-get" },
+  { label: "Contact", href: "#contact" },
 ] as const;
 
 // ─── Features ────────────────────────────────────────────────────────────────

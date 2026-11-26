@@ -9,7 +9,6 @@ const productLinks = [
   { label: "Features", href: "/#features" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "What You Get", href: "/#what-you-get" },
-  { label: "Pricing", href: "/#pricing" },
   { label: "Admin Panel", href: "/admin-panel" },
 ];
 

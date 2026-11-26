@@ -118,7 +118,7 @@ export function MobileNav({ isOpen, onOpen, onClose }: MobileNavProps) {
     },
     {
       title: "Contact Us",
-      desc: "Questions about custom setups, pricing, or team",
+      desc: "Questions about custom setups, onboarding, or team",
       href: "/contact",
       icon: Mail,
       badge: "Support",
@@ -142,14 +142,19 @@ export function MobileNav({ isOpen, onOpen, onClose }: MobileNavProps) {
       icon: Zap,
     },
     {
-      title: "Pricing Plans",
-      href: "/#pricing",
-      icon: CreditCard,
+      title: "Why KnowBridge",
+      href: "/#why-knowbridge",
+      icon: Sparkles,
     },
     {
-      title: "Frequently Asked Questions",
-      href: "/#faq",
-      icon: HelpCircle,
+      title: "What You Get",
+      href: "/#what-you-get",
+      icon: Layers,
+    },
+    {
+      title: "Contact & Demo",
+      href: "/#contact",
+      icon: Mail,
     },
   ];
 

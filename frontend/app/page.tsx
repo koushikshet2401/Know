@@ -4,7 +4,6 @@ import { Features } from "@/components/sections/Features";
 import { WhyKnowBridge } from "@/components/sections/WhyKnowBridge";
 import { WhatYouGet } from "@/components/sections/WhatYouGet";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Pricing } from "@/components/sections/Pricing";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PinnedOverlayCard } from "@/components/ui/PinnedOverlayCard";
 
@@ -75,20 +74,11 @@ export default function HomePage() {
         <HowItWorks />
       </PinnedOverlayCard>
 
-      {/* 8. Pricing */}
-      <PinnedOverlayCard
-        id="pricing"
-        zIndex={24}
-        bgClassName="bg-zinc-50"
-      >
-        <Pricing />
-      </PinnedOverlayCard>
-
-      {/* 9. Contact & Demo Request Form */}
+      {/* 8. Contact & Demo Request Form */}
       <PinnedOverlayCard
         id="contact"
-        zIndex={26}
-        bgClassName="bg-white"
+        zIndex={24}
+        bgClassName="bg-zinc-50"
       >
         <ContactSection />
       </PinnedOverlayCard>
