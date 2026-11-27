@@ -34,6 +34,7 @@ export function DemoForm() {
       preferred_date: "",
       message: "",
       _honeypot: "",
+      consent: false as unknown as true,
     },
   });
 
@@ -302,6 +303,30 @@ export function DemoForm() {
             {...register("message")}
           />
         </FormField>
+
+        {/* DPDP Consent Checkbox */}
+        <div>
+          <div className="flex items-start gap-3 mt-6">
+            <input
+              type="checkbox"
+              id="consent"
+              required
+              className="mt-1 w-4 h-4 accent-brand-primary flex-shrink-0"
+              {...register("consent")}
+            />
+            <label htmlFor="consent" className="text-zinc-600 text-sm leading-relaxed">
+              I consent to KnowBridge collecting and processing my personal data for the purpose of providing AI customer support services, as described in the{" "}
+              <Link href="/privacy-policy" className="text-brand-primary underline hover:text-brand-dark">
+                Privacy Policy
+              </Link>
+              . I understand I can withdraw this consent at any time by clicking the link in any email from KnowBridge.{" "}
+              <span className="text-zinc-500">(Required — DPDP Act 2023)</span>
+            </label>
+          </div>
+          {errors.consent && (
+            <p className="text-red-600 text-xs mt-1.5 ml-7 font-medium">{errors.consent.message}</p>
+          )}
+        </div>
 
         {/* Submit Button */}
         <div className="pt-2">

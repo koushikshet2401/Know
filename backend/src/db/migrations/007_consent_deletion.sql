@@ -1,0 +1,1 @@
+ALTER TABLE consent_records ADD COLUMN IF NOT EXISTS data_deleted BOOLEAN DEFAULT FALSE;

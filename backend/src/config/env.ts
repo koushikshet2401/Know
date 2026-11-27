@@ -27,7 +27,7 @@ export function validateEnv() {
   }
 
   if (missing.length > 0) {
-    console.error("\n❌ [FATAL] Missing required environment variables:");
+    console.error("\n[FATAL] Missing required environment variables:");
     missing.forEach((v) => console.error(`   - ${v}`));
     console.error("Please check your .env file and restart the server.\n");
     process.exit(1);

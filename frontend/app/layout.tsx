@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { ScrollNavigator } from "@/components/ui/ScrollNavigator";
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { ClientLayoutShell } from "@/components/layout/ClientLayoutShell";
 import { SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -145,14 +142,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-zinc-900">
-        <SmoothScrollProvider>
-          <Navbar />
-          {/* pb-20 on mobile ensures fixed bottom navigation does not cover page content */}
-          <main className="flex-1 pt-16 pb-20 lg:pb-0">{children}</main>
-          <Footer />
-          {/* Floating desktop scroll controller */}
-          <ScrollNavigator />
-        </SmoothScrollProvider>
+        <ClientLayoutShell>{children}</ClientLayoutShell>
       </body>
     </html>
   );

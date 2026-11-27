@@ -385,22 +385,8 @@ export const ADMIN_PANEL_FEATURES: AdminPanelFeature[] = [
     videoUrl: "PLACEHOLDER",
   },
   {
-    id: "multisite",
-    side: "left",
-    title: "Manage multiple websites from one account",
-    description:
-      "Running more than one product or client website? Each site gets its own isolated bot, knowledge base, and conversation history.",
-    bullets: [
-      "Add multiple websites under one account",
-      "Each website is fully isolated — no data mixing",
-      "Separate knowledge bases per website",
-      "Switch between websites instantly from the sidebar",
-    ],
-    videoUrl: "PLACEHOLDER",
-  },
-  {
     id: "agents",
-    side: "right",
+    side: "left",
     title: "Add your whole support team",
     description:
       "Invite team members to the dashboard. Each agent sees live conversations and can take over from the AI when needed.",

@@ -9,19 +9,19 @@ export async function runStartupChecks(): Promise<void> {
 
   const db = await checkDbConnection();
   if (db.ok) {
-    console.log("  ✅ Database     connected");
+    console.log("  [OK]     Database connected");
   } else {
-    console.log("  ❌ Database     FAILED —", db.error);
+    console.log("  [FAILED] Database FAILED —", db.error);
   }
 
   const smtp = await checkSmtpConnection();
   if (smtp.ok) {
-    console.log("  ✅ SMTP         connected");
+    console.log("  [OK]     SMTP connected");
   } else {
-    console.log("  ❌ SMTP         FAILED —", smtp.error);
+    console.log("  [FAILED] SMTP FAILED —", smtp.error);
   }
 
-  console.log("  🚀 Server       PORT", env.port);
+  console.log("  [SERVER] Running on PORT", env.port);
   console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
 
   if (!db.ok) {

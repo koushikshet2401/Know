@@ -427,15 +427,13 @@ export function MobileNav({ isOpen, onOpen, onClose }: MobileNavProps) {
                       onClick={onClose}
                       asChild
                     >
-                      <a
-                        href="https://app.knowbridge.io/login"
-                        target="_blank"
-                        rel="noreferrer"
+                      <Link
+                        href="/admin/login"
                         className="flex items-center justify-center gap-1.5"
                       >
                         <span>Login to Dashboard</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
-                      </a>
+                        <ArrowRight className="w-3.5 h-3.5 text-zinc-400" />
+                      </Link>
                     </Button>
                   </div>
 

@@ -9,12 +9,13 @@ import { cn } from "@/lib/utils";
 import { MobileNav } from "@/components/layout/MobileNav";
 
 const navItems = [
-  { label: "Home", href: "#hero" },
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Why KnowBridge", href: "#why-knowbridge" },
-  { label: "What You Get", href: "#what-you-get" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#hero" },
+  { label: "Features", href: "/#features" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Why KnowBridge", href: "/#why-knowbridge" },
+  { label: "What You Get", href: "/#what-you-get" },
+  { label: "Admin Features", href: "/admin-panel" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -66,28 +67,28 @@ export function Navbar() {
             aria-label="Main navigation"
           >
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className="px-3 py-1.5 text-sm text-zinc-600 hover:text-zinc-950 transition-colors duration-150 rounded-lg hover:bg-zinc-100/70 font-medium"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-2.5">
             <Link
-              href="/admin-panel"
+              href="/admin/login"
               className="px-3 py-1.5 text-sm font-medium text-zinc-700 hover:text-black hover:bg-zinc-100/70 rounded-lg transition-colors"
             >
               Log In
             </Link>
             <Button variant="primary" size="sm" asChild>
-              <a href="#contact" className="px-4 py-2 text-sm font-semibold">
+              <Link href="/#contact" className="px-4 py-2 text-sm font-semibold">
                 Book a Demo
-              </a>
+              </Link>
             </Button>
           </div>
 

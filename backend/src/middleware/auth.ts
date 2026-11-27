@@ -1,18 +1,12 @@
-import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { validateEnv } from "../config/validateEnv";
-
-const env = validateEnv();
-
-export interface AdminJwtPayload {
-  adminId: string;
-  email: string;
-}
+import { Request, Response, NextFunction } from "express";
+import { env } from "../config/env";
+import { AdminPayload } from "../modules/auth/auth.service";
 
 declare global {
   namespace Express {
     interface Request {
-      admin?: AdminJwtPayload;
+      admin?: AdminPayload;
     }
   }
 }
@@ -27,7 +21,7 @@ export function verifyAdmin(
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     res.status(401).json({
       success: false,
-      message: "Authentication token required",
+      message: "Authentication required",
     });
     return;
   }
@@ -35,13 +29,13 @@ export function verifyAdmin(
   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, env.JWT_SECRET) as AdminJwtPayload;
+    const decoded = jwt.verify(token, env.jwtSecret) as AdminPayload;
     req.admin = decoded;
     next();
-  } catch (err) {
+  } catch (error) {
     res.status(401).json({
       success: false,
-      message: "Invalid or expired token",
+      message: "Session expired. Please log in again.",
     });
   }
 }

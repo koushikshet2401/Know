@@ -1,8 +1,21 @@
 import rateLimit from "express-rate-limit";
 
-export const formLimiter = rateLimit({
+const isTest = process.env.NODE_ENV === "test";
+
+export const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: process.env.NODE_ENV === "development" ? 100 : 5, // 5 requests in prod, generous for dev
+  max: isTest ? 1000 : 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many login attempts. Try again in 15 minutes.",
+  },
+});
+
+export const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: isTest ? 5000 : 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: {
@@ -11,13 +24,15 @@ export const formLimiter = rateLimit({
   },
 });
 
-export const adminLimiter = rateLimit({
+export const formLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 20, // 20 requests per window per IP
+  max: isTest ? 1000 : 5,
   standardHeaders: true,
   legacyHeaders: false,
   message: {
     success: false,
-    message: "Too many admin requests from this IP. Please try again later.",
+    message: "Too many requests from this IP. Please try again after 15 minutes.",
   },
 });
+
+export const adminLimiter = apiLimiter;

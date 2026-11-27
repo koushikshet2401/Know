@@ -25,6 +25,9 @@ export const demoRequestSchema = z.object({
   preferred_date: z.string().optional().or(z.literal("")),
   message: z.string().max(2000, "Message must be under 2000 characters").optional().or(z.literal("")),
   _honeypot: z.string().optional(),
+  consent: z.literal(true, {
+    message: "Consent is required to submit this form.",
+  }),
 });
 
 export type DemoRequestInput = z.infer<typeof demoRequestSchema>;

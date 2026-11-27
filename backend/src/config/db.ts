@@ -2,7 +2,10 @@ import { Pool } from "pg";
 import { env } from "./env";
 
 export const pool = new Pool({
-  connectionString: env.databaseUrl,
+  connectionString:
+    process.env.NODE_ENV === "test" && process.env.DATABASE_URL_TEST
+      ? process.env.DATABASE_URL_TEST
+      : process.env.DATABASE_URL || env.databaseUrl,
 });
 
 export async function checkDbConnection(): Promise<
