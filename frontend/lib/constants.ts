@@ -321,7 +321,8 @@ export interface AdminPanelFeature {
   title: string;
   description: string;
   bullets: string[];
-  videoUrl: string;
+  videoUrl?: string;
+  imageUrl?: string;
   side: "left" | "right";
 }
 

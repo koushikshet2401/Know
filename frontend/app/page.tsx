@@ -79,7 +79,7 @@ export default function HomePage() {
       <PinnedOverlayCard
         id="admin-features"
         zIndex={24}
-        bgClassName="bg-zinc-50"
+        bgClassName="bg-white"
       >
         <AdminFeatures />
       </PinnedOverlayCard>
@@ -88,7 +88,7 @@ export default function HomePage() {
       <PinnedOverlayCard
         id="contact"
         zIndex={26}
-        bgClassName="bg-white"
+        bgClassName="bg-zinc-50"
       >
         <ContactSection />
       </PinnedOverlayCard>

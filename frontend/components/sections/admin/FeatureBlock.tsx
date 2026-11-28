@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Play, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,7 +11,8 @@ interface FeatureBlockProps {
   title: string;
   description: string;
   bullets: string[] | readonly string[];
-  videoUrl: string;
+  videoUrl?: string;
+  imageUrl?: string;
   side: "left" | "right";
   index: number;
 }
@@ -21,6 +23,7 @@ export function FeatureBlock({
   description,
   bullets,
   videoUrl,
+  imageUrl,
   side,
   index,
 }: FeatureBlockProps) {
@@ -41,7 +44,7 @@ export function FeatureBlock({
       id={id}
       className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center py-16 lg:py-24 border-b border-zinc-200 last:border-b-0"
     >
-      {/* Video Div */}
+      {/* Video / Image Div */}
       <motion.div
         initial={{ opacity: 0, x: videoInitialX }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: videoInitialX }}
@@ -52,7 +55,14 @@ export function FeatureBlock({
         )}
       >
         <div className="relative rounded-xl bg-zinc-50 border border-zinc-200 overflow-hidden aspect-video shadow-xs group">
-          {isPlaceholder ? (
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={title}
+              fill
+              className="object-cover"
+            />
+          ) : isPlaceholder ? (
             <div className="w-full h-full bg-white flex flex-col items-center justify-center p-6 text-center select-none">
               <div className="w-14 h-14 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
                 <Play className="w-7 h-7 text-zinc-900 fill-zinc-900/10 ml-0.5" />
