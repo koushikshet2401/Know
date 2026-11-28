@@ -62,9 +62,9 @@ export function MobileNav({ isOpen, onOpen, onClose }: MobileNavProps) {
     },
     {
       label: "ADMIN",
-      href: "/admin-panel",
+      href: "/#admin-features",
       icon: LayoutDashboard,
-      isActive: pathname === "/admin-panel",
+      isActive: false,
     },
     {
       label: "DEMO",
@@ -150,6 +150,11 @@ export function MobileNav({ isOpen, onOpen, onClose }: MobileNavProps) {
       title: "What You Get",
       href: "/#what-you-get",
       icon: Layers,
+    },
+    {
+      title: "Admin Features",
+      href: "/#admin-features",
+      icon: LayoutDashboard,
     },
     {
       title: "Contact & Demo",

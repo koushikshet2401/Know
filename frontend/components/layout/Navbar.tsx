@@ -14,7 +14,7 @@ const navItems = [
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Why KnowBridge", href: "/#why-knowbridge" },
   { label: "What You Get", href: "/#what-you-get" },
-  { label: "Admin Features", href: "/admin-panel" },
+  { label: "Admin Features", href: "/#admin-features" },
   { label: "Contact", href: "/#contact" },
 ];
 
