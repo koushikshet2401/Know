@@ -27,11 +27,14 @@ app.use(helmet());
 const isProd = env.nodeEnv === "production" || process.env.NODE_ENV === "production";
 const allowedOrigins = isProd
   ? [env.frontendUrl]
-  : ["http://localhost:3000", "http://localhost:4000", env.frontendUrl];
+  : ["http://localhost:3000", "http://localhost:3001", "http://localhost:4000", env.frontendUrl];
 
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
+    if (!isProd && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+      return callback(null, true);
+    }
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
