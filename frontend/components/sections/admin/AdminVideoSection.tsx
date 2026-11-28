@@ -46,7 +46,9 @@ export function AdminVideoSection() {
             <video
               src={VIDEO_ADMIN_OVERVIEW_URL}
               controls
-              className="w-full h-full object-cover"
+              muted
+              playsInline
+              className="w-full h-full object-cover bg-black"
             />
           )}
         </div>

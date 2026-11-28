@@ -313,8 +313,7 @@ export const INTEGRATION_BENEFITS: readonly BenefitItem[] = [
 ] as const;
 
 // ─── Admin Panel Showcase ───────────────────────────────────────────────────
-export const VIDEO_ADMIN_OVERVIEW_URL =
-  "https://www.youtube.com/embed/PLACEHOLDER_ADMIN_OVERVIEW";
+export const VIDEO_ADMIN_OVERVIEW_URL = "/videos/walkthrough.mp4";
 
 export interface AdminPanelFeature {
   id: string;
@@ -339,7 +338,7 @@ export const ADMIN_PANEL_FEATURES: AdminPanelFeature[] = [
       "View full message history with timestamps",
       "Know which page the customer was on when they started chatting",
     ],
-    videoUrl: "PLACEHOLDER",
+    imageUrl: "/images/conversations.jpeg",
   },
   {
     id: "takeover",
@@ -353,7 +352,7 @@ export const ADMIN_PANEL_FEATURES: AdminPanelFeature[] = [
       "Full conversation context visible — no need to repeat",
       "Mark conversations resolved when done",
     ],
-    videoUrl: "PLACEHOLDER",
+    imageUrl: "/images/takeover.jpeg",
   },
   {
     id: "knowledge",
@@ -368,26 +367,11 @@ export const ADMIN_PANEL_FEATURES: AdminPanelFeature[] = [
       "Add, remove, or update documents at any time",
       "No redeployment needed — changes are instant",
     ],
-    videoUrl: "PLACEHOLDER",
-  },
-  {
-    id: "widget",
-    side: "right",
-    title: "Customise the chat widget to match your brand",
-    description:
-      "The widget on your website is configured entirely from the dashboard. Change the name, colour, greeting, and behaviour without touching code.",
-    bullets: [
-      "Set bot name and greeting message",
-      "Choose widget theme colour",
-      "Configure escalation trigger message",
-      "Preview widget before going live",
-      "Generate and copy your embed code from one screen",
-    ],
-    videoUrl: "PLACEHOLDER",
+    imageUrl: "/images/knowledge.jpeg",
   },
   {
     id: "agents",
-    side: "left",
+    side: "right",
     title: "Add your whole support team",
     description:
       "Invite team members to the dashboard. Each agent sees live conversations and can take over from the AI when needed.",
@@ -397,7 +381,7 @@ export const ADMIN_PANEL_FEATURES: AdminPanelFeature[] = [
       "Admin controls who has access",
       "Real-time presence — see which agents are online",
     ],
-    videoUrl: "PLACEHOLDER",
+    imageUrl: "/images/team.png",
   },
 ];
 

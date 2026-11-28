@@ -60,7 +60,8 @@ export function FeatureBlock({
               src={imageUrl}
               alt={title}
               fill
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-top hover:scale-[1.02] transition-transform duration-300"
             />
           ) : isPlaceholder ? (
             <div className="w-full h-full bg-white flex flex-col items-center justify-center p-6 text-center select-none">
